@@ -1,0 +1,15 @@
+-- SELECT * FROM pages;
+
+WITH
+    join_page AS (
+    SELECT p.page_id,
+           pl.user_id
+    FROM pages p
+    LEFT JOIN page_likes pl
+        ON p.page_id = pl.page_id
+    )
+
+SELECT page_id 
+FROM join_page
+WHERE user_id IS NULL
+ORDER BY page_id ASC;
