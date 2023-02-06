@@ -1,0 +1,15 @@
+-- SELECT * FROM viewership;
+
+SELECT laptop_view,
+       mobile_view
+FROM 
+(
+SELECT COUNT(view_time) AS laptop_view
+FROM viewership
+WHERE device_type = 'laptop'
+) AS laptop_view,
+(
+SELECT COUNT(view_time) AS mobile_view
+FROM viewership
+WHERE device_type IN ('tablet', 'phone')
+) AS mobile_view
