@@ -1,0 +1,15 @@
+SELECT * FROM candidates;
+WITH
+    get_skill AS (
+    SELECT candidate_id,
+           COUNT(skill) AS total_skill
+    FROM candidates
+    WHERE skill IN ('Python', 'Tableau', 'PostgreSQL')
+    GROUP BY candidate_id  
+    )
+
+-- SELECT * FROM get_skill
+SELECT candidate_id
+FROM get_skill
+WHERE total_skill = 3
+ORDER BY candidate_id
