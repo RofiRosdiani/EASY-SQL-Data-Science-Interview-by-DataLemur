@@ -1,0 +1,11 @@
+SELECT * FROM parts_assembly;
+
+WITH
+    filter_part AS (
+    SELECT * 
+    FROM parts_assembly
+    WHERE finish_date IS NULL
+    )
+        
+SELECT DISTINCT part 
+FROM filter_part
