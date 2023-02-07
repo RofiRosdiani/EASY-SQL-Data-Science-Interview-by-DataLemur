@@ -1,0 +1,10 @@
+-- one company with a duplicate job
+-- two jobs at the same company with the same title and description
+
+SELECT count(company_id) AS co_w_duplicate_jobs
+FROM
+(
+SELECT company_id, title, description 
+FROM job_listings
+GROUP BY company_id, title, description HAVING count(*) > 1
+) AS b
